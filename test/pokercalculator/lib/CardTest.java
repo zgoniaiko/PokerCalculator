@@ -4,6 +4,7 @@
  */
 package pokercalculator.lib;
 
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,8 +38,32 @@ public class CardTest {
   }
 
   @Test
-  public void testSomeMethod() {
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+  public void testAceIsLargerThenTwo()
+  {
+    Card ace = new Card(new Suit(1), new Pips(1));
+    Card two = new Card(new Suit(1), new Pips(2));
+
+    Card[] cards = new Card[2];
+    cards[0] = ace;
+    cards[1] = two;
+
+    Arrays.sort(cards);
+    assertEquals("Ace is 1-st in array", ace, cards[0]);
+    assertEquals("2 is 2-nd in array", two, cards[1]);
+  }
+
+  @Test
+  public void testAceIsLargerThenTwoReverse()
+  {
+    Card ace = new Card(new Suit(1), new Pips(1));
+    Card two = new Card(new Suit(1), new Pips(2));
+    
+    Card[] reverseCards = new Card[2];
+    reverseCards[0] = two;
+    reverseCards[1] = ace;
+
+    Arrays.sort(reverseCards);
+    assertEquals("Ace is 1-st in array", ace, reverseCards[0]);
+    assertEquals("2 is 2-nd in array", two, reverseCards[1]);
   }
 }
