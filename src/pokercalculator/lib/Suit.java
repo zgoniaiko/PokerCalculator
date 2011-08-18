@@ -18,6 +18,22 @@ public class Suit {
     suitValue = i;
   }
 
+  Suit(String suitString) {
+    String suit = suitString.trim().toLowerCase();
+    
+    if (suit.equals("s")) {
+      suitValue = SPADES;
+    } else if (suit.equals("c")) {
+      suitValue = CLUBS;
+    } else if (suit.equals("d")) {
+      suitValue = DIAMONDS;
+    } else if (suit.equals("h")) {
+      suitValue = HEARTS;
+    } else {
+      throw new NullPointerException("Provided incorrect suit: " + suitString);
+    }
+  }
+
   public String toString() {
     switch (suitValue)
     {
