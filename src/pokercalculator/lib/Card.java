@@ -28,7 +28,7 @@ public class Card implements Comparable {
     Card tmp = (Card)o;
     if ((this != null) && (o != null))
     {
-      int pip1 = this.getPip().getValue();
+      int pip1 = getPip().getValue();
       int pip2 = tmp.getPip().getValue();
 
       if (pip1 == 1) {
