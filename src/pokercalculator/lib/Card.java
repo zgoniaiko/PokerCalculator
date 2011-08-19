@@ -6,11 +6,11 @@ package pokercalculator.lib;
  */
 public class Card implements Comparable {
   private Suit suit;
-  private Pips pip;
+  private Pips pips;
 
   Card(Suit suit, Pips pips) {
-    suit = suit;
-    pip = pips;
+    this.suit = suit;
+    this.pips = pips;
   }
 
   public Suit getSuit()
@@ -18,9 +18,9 @@ public class Card implements Comparable {
     return suit;
   }
 
-  public Pips getPip()
+  public Pips getPips()
   {
-    return pip;
+    return pips;
   }
   
   @Override
@@ -28,16 +28,16 @@ public class Card implements Comparable {
     Card tmp = (Card)o;
     if ((this != null) && (o != null))
     {
-      int pip1 = getPip().getValue();
-      int pip2 = tmp.getPip().getValue();
+      int pips1 = getPips().getValue();
+      int pips2 = tmp.getPips().getValue();
 
-      if (pip1 == 1) {
-        if (pip1 != pip2) return -1;
-      } else if (pip2 == 1) {
-        if (pip1 != pip2) return 1;
+      if (pips1 == 1) {
+        if (pips1 != pips2) return -1;
+      } else if (pips2 == 1) {
+        if (pips1 != pips2) return 1;
       } else {
-        if (pip1 < pip2) { return 1; }
-        else if (pip1 > pip2) { return -1; }
+        if (pips1 < pips2) { return 1; }
+        else if (pips1 > pips2) { return -1; }
       }
     }
 
