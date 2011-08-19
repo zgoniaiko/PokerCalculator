@@ -53,6 +53,7 @@ public class Suit {
   @Override
 	public boolean equals(Object obj) {
 		if (obj == null ) return false;
+    if (getClass() != obj.getClass()) return false;
 		Suit that = (Suit)obj;
 
 		return this.getValue() == that.getValue();

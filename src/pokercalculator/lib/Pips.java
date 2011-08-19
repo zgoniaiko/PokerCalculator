@@ -4,7 +4,7 @@ package pokercalculator.lib;
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
-public class Pips {
+public class Pips implements Comparable {
   private int pipsValue;
 
   Pips(int i)
@@ -14,7 +14,7 @@ public class Pips {
   }
 
   Pips(String pipsString) {
-    String pips = pipsString.trim().toLowerCase();
+    String pips = pipsString.trim().toUpperCase();
 
     if (pips.equals("2")) {
       pipsValue = 2;
@@ -32,15 +32,15 @@ public class Pips {
       pipsValue = 8;
     } else if (pips.equals("9")) {
       pipsValue = 9;
-    } else if (pips.equals("10")) {
+    } else if (pips.equals("T")) {
       pipsValue = 10;
-    } else if (pips.equals("j")) {
+    } else if (pips.equals("J")) {
       pipsValue = 11;
-    } else if (pips.equals("q")) {
+    } else if (pips.equals("Q")) {
       pipsValue = 12;
-    } else if (pips.equals("k")) {
+    } else if (pips.equals("K")) {
       pipsValue = 13;
-    } else if (pips.equals("a")) {
+    } else if (pips.equals("A")) {
       pipsValue = 14;
     } else {
       throw new NullPointerException("Provided incorrect pips: " + pipsString);
@@ -50,16 +50,18 @@ public class Pips {
   @Override
   public String toString()
   {
-    if (pipsValue > 1 && pipsValue < 11)
+    if (pipsValue > 1 && pipsValue < 10)
       return String.valueOf(pipsValue);
+    else if (pipsValue == 10)
+      return "T";
     else if (pipsValue == 11)
-      return "j";
+      return "J";
     else if (pipsValue == 12)
-      return "q";
+      return "Q";
     else if (pipsValue == 13)
-      return "k";
+      return "K";
     else if (pipsValue == 14)
-      return "a";
+      return "A";
     else throw new NullPointerException("Provided incorrect pips: " + pipsValue);
   }
 
@@ -71,6 +73,7 @@ public class Pips {
   @Override
 	public boolean equals(Object obj) {
 		if (obj == null ) return false;
+    if (getClass() != obj.getClass()) return false;
 		Pips that = (Pips)obj;
 
     return this.getValue() == that.getValue();
@@ -82,5 +85,20 @@ public class Pips {
     hash = 79 * hash + this.pipsValue;
 
     return hash;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    final int BEFORE = -1;
+    final int EQUAL = 0;
+    final int AFTER = 1;
+    
+		if ((o == null) || (this == null)) return EQUAL;
+    Pips that = (Pips)o;
+    
+    if (getValue() < that.getValue()) { return AFTER; }
+    else if (getValue() > that.getValue()) { return BEFORE; }
+    
+    return EQUAL;
   }
 }

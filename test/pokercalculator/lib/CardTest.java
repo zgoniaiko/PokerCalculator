@@ -69,7 +69,7 @@ public class CardTest {
     Card spadesAce2 = new Card(new Suit(1), new Pips(14));
     Card clubsKing = new Card(new Suit(2), new Pips(13));
 
-		assertEquals("sa", spadesAce1.toString());
+		assertEquals("As", spadesAce1.toString());
     assertTrue("same cards should be equal", spadesAce1.equals(spadesAce2));
     assertFalse("different cards should not be equal", spadesAce1.equals(clubsKing));
     assertTrue("equal cards should should have same hash code", spadesAce1.hashCode() == spadesAce2.hashCode());

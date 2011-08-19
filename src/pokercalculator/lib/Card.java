@@ -15,7 +15,7 @@ public class Card implements Comparable {
 
   @Override
   public String toString() {
-    return getSuit().toString() + getPips().toString();
+    return getPips().toString() + getSuit().toString();
   }
 
   public Suit getSuit()
@@ -29,29 +29,9 @@ public class Card implements Comparable {
   }
 
   @Override
-  public int compareTo(Object o) {
-    Card tmp = (Card)o;
-    if ((this != null) && (o != null))
-    {
-      int pips1 = getPips().getValue();
-      int pips2 = tmp.getPips().getValue();
-
-      if (pips1 == 1) {
-        if (pips1 != pips2) return -1;
-      } else if (pips2 == 1) {
-        if (pips1 != pips2) return 1;
-      } else {
-        if (pips1 < pips2) { return 1; }
-        else if (pips1 > pips2) { return -1; }
-      }
-    }
-
-    return 0;
-  }
-
-  @Override
 	public boolean equals(Object obj) {
 		if (obj == null ) return false;
+    if (getClass() != obj.getClass()) return false;
 		Card that = (Card)obj;
 		
     return (this.getSuit().equals(that.getSuit()) && this.getPips().equals(that.getPips()));
@@ -64,5 +44,17 @@ public class Card implements Comparable {
     hash = 59 * hash + (this.pips != null ? this.pips.hashCode() : 0);
     
     return hash;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    final int BEFORE = -1;
+    final int EQUAL = 0;
+    final int AFTER = 1;
+    
+		if ((o == null) || (this == null)) return EQUAL;
+    Card that = (Card)o;
+    
+    return getPips().compareTo(that.getPips());
   }
 }

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class PipsTest {
-  private String[] pipsNames = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"};
+  private String[] pipsNames = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
 
   public PipsTest() {
   }
@@ -66,7 +66,7 @@ public class PipsTest {
     Pips ace2 = new Pips(14);
     Pips king = new Pips(13);
 
-		assertEquals("a", ace1.toString());
+		assertEquals("A", ace1.toString());
     assertTrue("same pips should be equal", ace1.equals(ace2));
     assertFalse("different pips should not be equal", ace1.equals(king));
     assertTrue("equal pips should should have same hash code", ace1.hashCode() == ace2.hashCode());

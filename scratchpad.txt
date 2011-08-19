@@ -1,1 +1,0 @@
-Don't ask Pips and Suit about their values for compare cards, but compare objects
