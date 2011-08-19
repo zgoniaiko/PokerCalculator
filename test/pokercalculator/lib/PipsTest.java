@@ -35,20 +35,26 @@ public class PipsTest {
     
   @Test
   public void testPipsCreatedFromInt() {
-    for (int i = 0; i<12; i++) {
+    for (int i = 0; i<13; i++) {
       assertEquals(pipsNames[i], new Pips(i+1).toString());
     }
   }
   
   @Test
   public void testPipsCreatedFromString() {
-    for (int i = 0; i<12; i++) {
+    for (int i = 0; i<13; i++) {
       assertEquals(new Pips(i+1).toString(), new Pips(pipsNames[i]).toString());
     }
   }
   
   @Test(expected=NullPointerException.class)
-  public void checkExpectedException()
+  public void checkExpectedExceptionFromString()
+  {
+    Pips pips = new Pips("Foo");
+  }
+  
+  @Test(expected=NullPointerException.class)
+  public void checkExpectedExceptionFromInt()
   {
     Pips pips = new Pips(100);
   }

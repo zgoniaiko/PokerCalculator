@@ -10,7 +10,7 @@ public class Suit {
   static final int CLUBS = 2;
   static final int DIAMONDS = 3;
   static final int HEARTS = 4;
-  int suitValue;
+  private int suitValue;
 
   Suit(int i)
   {

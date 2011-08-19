@@ -5,7 +5,7 @@ package pokercalculator.lib;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class Pips {
-  int pipsValue;
+  private int pipsValue;
 
   Pips(int i)
   {

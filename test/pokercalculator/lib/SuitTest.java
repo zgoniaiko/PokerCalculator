@@ -40,6 +40,12 @@ public class SuitTest {
       assertEquals(suitNames[i], new Suit(i+1).toString());
     }
   }
+
+  @Test(expected=NullPointerException.class)
+  public void checkExpectedExceptionFromInt()
+  {
+    Suit suit = new Suit(5);
+  }
           
   @Test
   public void testSuitCreatedFromString() {            
@@ -49,8 +55,8 @@ public class SuitTest {
   }
   
   @Test(expected=NullPointerException.class)
-  public void checkExpectedException()
+  public void checkExpectedExceptionFromString()
   {
-    Suit suit = new Suit(5);
+    Suit suit = new Suit("W");
   }
 }
