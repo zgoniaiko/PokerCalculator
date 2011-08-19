@@ -34,6 +34,11 @@ public class CardTest {
   }
 
   @Test
+  public void testCardCreatedFromString() {
+		assertEquals("card can be created from string", "As", new Card("As").toString());
+  }
+  
+  @Test
   public void testAceIsLargerThenTwo()
   {
     Card ace = new Card(new Suit(1), new Pips(14));
