@@ -1,5 +1,1 @@
-Ace is highest card and shuld have more pips then King
-
-pips should equal objects in case they have same values. same for suit and cards.
-
 Don't ask Pips and Suit about their values for compare cards, but compare objects

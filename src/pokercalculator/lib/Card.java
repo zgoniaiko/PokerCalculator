@@ -13,6 +13,11 @@ public class Card implements Comparable {
     this.pips = pips;
   }
 
+  @Override
+  public String toString() {
+    return getSuit().toString() + getPips().toString();
+  }
+
   public Suit getSuit()
   {
     return suit;
@@ -22,7 +27,7 @@ public class Card implements Comparable {
   {
     return pips;
   }
-  
+
   @Override
   public int compareTo(Object o) {
     Card tmp = (Card)o;
@@ -43,5 +48,21 @@ public class Card implements Comparable {
 
     return 0;
   }
-  
+
+  @Override
+	public boolean equals(Object obj) {
+		if (obj == null ) return false;
+		Card that = (Card)obj;
+		
+    return (this.getSuit().equals(that.getSuit()) && this.getPips().equals(that.getPips()));
+	}
+
+  @Override
+  public int hashCode() {
+    int hash = 3;
+    hash = 59 * hash + (this.suit != null ? this.suit.hashCode() : 0);
+    hash = 59 * hash + (this.pips != null ? this.pips.hashCode() : 0);
+    
+    return hash;
+  }
 }

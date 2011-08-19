@@ -20,7 +20,7 @@ public class Suit {
 
   Suit(String suitString) {
     String suit = suitString.trim().toLowerCase();
-    
+
     if (suit.equals("s")) {
       suitValue = SPADES;
     } else if (suit.equals("c")) {
@@ -48,5 +48,21 @@ public class Suit {
   public int getValue()
   {
     return suitValue;
-  }  
+  }
+
+  @Override
+	public boolean equals(Object obj) {
+		if (obj == null ) return false;
+		Suit that = (Suit)obj;
+
+		return this.getValue() == that.getValue();
+	}
+
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 53 * hash + this.suitValue;
+
+    return hash;
+  }
 }
