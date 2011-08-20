@@ -1,9 +1,5 @@
 package pokercalculator;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.prefs.Preferences;
-
 /**
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
