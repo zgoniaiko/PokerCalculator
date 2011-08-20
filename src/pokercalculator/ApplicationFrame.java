@@ -10,31 +10,36 @@ import javax.swing.*;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 class ApplicationFrame extends JFrame {
-  private Preferences node;
   private JFileChooser chooser;
-  public static final int DEFAULT_WIDTH = 840;
-  public static final int DEFAULT_HEIGHT = 600;
   
   ApplicationFrame()
   {
-    setTitle("Chances calculator");
+    setTitle("Poker Chances Calculator");
 
-    loadPreferences();
     setupFileChooser();
     createMenu();
     createPanels();
-  }
+    
+    addWindowListener(new WindowAdapter() {
+      @Override
+        public void windowClosing(WindowEvent ev) {
+          Preferences preferences = (new ApplicationPreferences()).getPreferences();
+          preferences.putInt("left", getX());
+          preferences.putInt("top", getY());
+          preferences.putInt("width", getWidth());
+          preferences.putInt("height", getHeight());
+          preferences.putBoolean("always-on-top", isAlwaysOnTop());
 
-  private void loadPreferences() {
-    // get position, size from preferences
-    Preferences root = Preferences.userRoot();
-    node = root.node("/poker_calculator");
-    int left = node.getInt("left", 0);
-    int top = node.getInt("top", 0);
-    int width = node.getInt("width", DEFAULT_WIDTH);
-    int height = node.getInt("height", DEFAULT_HEIGHT);
+          System.exit(0);
+        }
+    });
 
-    setBounds(left, top, width, height);
+    
+    ApplicationPreferences preferences = new ApplicationPreferences();
+    
+    setBounds(preferences.getPosition());
+    setAlwaysOnTop(preferences.isAlwaysOnTop());
+    setVisible(true);
   }
 
   private void setupFileChooser() {
@@ -70,6 +75,30 @@ class ApplicationFrame extends JFrame {
     hbox1.add(new DeckPanel());
   }
 
+  private class MenuPreferencesExportActionListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent event)
+    {
+      if(chooser.showSaveDialog(ApplicationFrame.this) == JFileChooser.APPROVE_OPTION)
+      {
+        try
+        {
+          OutputStream out = new FileOutputStream(chooser.getSelectedFile());
+          Preferences preferences = (new ApplicationPreferences()).getPreferences();
+          
+          preferences.putInt("left", getX());
+          preferences.putInt("top", getY());
+          preferences.putInt("width", getWidth());
+          preferences.putInt("height", getHeight());
+          preferences.putBoolean("always-on-top", isAlwaysOnTop());
+          preferences.exportSubtree(out);
+          out.close();
+        }
+        catch (Exception e) {}
+      }
+    }
+  }
+  
   private class MenuPreferencesImportActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event)
@@ -91,28 +120,14 @@ class ApplicationFrame extends JFrame {
     @Override
     public void actionPerformed(ActionEvent event)
     {
-      node.putInt("left", getX());
-      node.putInt("top", getY());
-      node.putInt("width", getWidth());
-      node.putInt("height", getHeight());
+      Preferences preferences = (new ApplicationPreferences()).getPreferences();
+      
+      preferences.putInt("left", getX());
+      preferences.putInt("top", getY());
+      preferences.putInt("width", getWidth());
+      preferences.putInt("height", getHeight());
+      preferences.putBoolean("always-on-top", isAlwaysOnTop());
       System.exit(0);
-    }
-  }
-
-  private class MenuPreferencesExportActionListener implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent event)
-    {
-      if(chooser.showSaveDialog(ApplicationFrame.this) == JFileChooser.APPROVE_OPTION)
-      {
-        try
-        {
-          OutputStream out = new FileOutputStream(chooser.getSelectedFile());
-          node.exportSubtree(out);
-          out.close();
-        }
-        catch (Exception e) {}
-      }
     }
   }
 }
