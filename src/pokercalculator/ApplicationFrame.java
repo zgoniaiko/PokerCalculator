@@ -20,6 +20,7 @@ class ApplicationFrame extends JFrame {
     setTitle("Chances calculator");
 
     loadPreferences();
+    setupFileChooser();
     createMenu();
     createPanels();
   }
@@ -34,28 +35,15 @@ class ApplicationFrame extends JFrame {
     int height = node.getInt("height", DEFAULT_HEIGHT);
 
     setBounds(left, top, width, height);
+  }
 
+  private void setupFileChooser() {
     // set up file chooser that shows XML files
-
     chooser = new JFileChooser();
     chooser.setCurrentDirectory(new File("."));
 
     // accept all files ending with .xml
-    chooser.setFileFilter(new
-    javax.swing.filechooser.FileFilter()
-    {
-      @Override
-      public boolean accept(File f)
-      {
-          return f.getName().toLowerCase().endsWith(".xml") || f.isDirectory();
-      }
-
-      @Override
-      public String getDescription()
-      {
-          return "XML files";
-      }
-    });
+    chooser.setFileFilter(new XmlFileFilter());
   }
 
   private void createMenu() {
@@ -66,71 +54,65 @@ class ApplicationFrame extends JFrame {
 
     JMenuItem exportItem = new JMenuItem("Export preferences");
     menu.add(exportItem);
-    exportItem.addActionListener(new
-      ActionListener()
-      {
-      @Override
-        public void actionPerformed(ActionEvent event)
-        {
-          if(chooser.showSaveDialog(ApplicationFrame.this) == JFileChooser.APPROVE_OPTION)
-          {
-            try
-            {
-              OutputStream out = new FileOutputStream(chooser.getSelectedFile());
-              node.exportSubtree(out);
-              out.close();
-            }
-            catch (Exception e)
-            {
-              e.printStackTrace();
-            }
-          }
-        }
-      });
+    exportItem.addActionListener(new MenuPreferencesExportActionListener());
 
     JMenuItem importItem = new JMenuItem("Import preferences");
     menu.add(importItem);
-    importItem.addActionListener(new
-      ActionListener()
-      {
-      @Override
-        public void actionPerformed(ActionEvent event)
-        {
-          if(chooser.showOpenDialog(ApplicationFrame.this) == JFileChooser.APPROVE_OPTION)
-          {
-            try
-            {
-               InputStream in = new FileInputStream(chooser.getSelectedFile());
-               node.importPreferences(in);
-               in.close();
-            }
-            catch (Exception e)
-            {
-               e.printStackTrace();
-            }
-          }
-        }
-      });
+    importItem.addActionListener(new MenuPreferencesImportActionListener());
 
     JMenuItem exitItem = new JMenuItem("Exit");
     menu.add(exitItem);
-    exitItem.addActionListener(new
-      ActionListener()
-      {
-      @Override
-        public void actionPerformed(ActionEvent event)
-        {
-           node.putInt("left", getX());
-           node.putInt("top", getY());
-           node.putInt("width", getWidth());
-           node.putInt("height", getHeight());
-           System.exit(0);
-        }
-      });
+    exitItem.addActionListener(new MenuExitActionListener());
   }
 
   private void createPanels() {
     Box hbox1 = Box.createHorizontalBox();
     hbox1.add(new DeckPanel());
+  }
+
+  private class MenuPreferencesImportActionListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent event)
+    {
+      if(chooser.showOpenDialog(ApplicationFrame.this) == JFileChooser.APPROVE_OPTION)
+      {
+        try
+        {
+          InputStream in = new FileInputStream(chooser.getSelectedFile());
+          Preferences.importPreferences(in);
+          in.close();
+        }
+        catch (Exception e) {}
+      }
+    }
+  }
+
+  private class MenuExitActionListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent event)
+    {
+      node.putInt("left", getX());
+      node.putInt("top", getY());
+      node.putInt("width", getWidth());
+      node.putInt("height", getHeight());
+      System.exit(0);
+    }
+  }
+
+  private class MenuPreferencesExportActionListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent event)
+    {
+      if(chooser.showSaveDialog(ApplicationFrame.this) == JFileChooser.APPROVE_OPTION)
+      {
+        try
+        {
+          OutputStream out = new FileOutputStream(chooser.getSelectedFile());
+          node.exportSubtree(out);
+          out.close();
+        }
+        catch (Exception e) {}
+      }
+    }
   }
 }
