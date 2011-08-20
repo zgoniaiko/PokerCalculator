@@ -23,12 +23,9 @@ class ApplicationFrame extends JFrame {
     addWindowListener(new WindowAdapter() {
       @Override
         public void windowClosing(WindowEvent ev) {
-          Preferences preferences = (new ApplicationPreferences()).getPreferences();
-          preferences.putInt("left", getX());
-          preferences.putInt("top", getY());
-          preferences.putInt("width", getWidth());
-          preferences.putInt("height", getHeight());
-          preferences.putBoolean("always-on-top", isAlwaysOnTop());
+          ApplicationPreferences preferences = new ApplicationPreferences();
+          preferences.setPosition(getBounds());
+          preferences.setAlwaysOnTop(isAlwaysOnTop());
 
           System.exit(0);
         }
@@ -84,14 +81,10 @@ class ApplicationFrame extends JFrame {
         try
         {
           OutputStream out = new FileOutputStream(chooser.getSelectedFile());
-          Preferences preferences = (new ApplicationPreferences()).getPreferences();
-          
-          preferences.putInt("left", getX());
-          preferences.putInt("top", getY());
-          preferences.putInt("width", getWidth());
-          preferences.putInt("height", getHeight());
-          preferences.putBoolean("always-on-top", isAlwaysOnTop());
-          preferences.exportSubtree(out);
+          ApplicationPreferences preferences = new ApplicationPreferences();
+          preferences.setPosition(getBounds());
+          preferences.setAlwaysOnTop(isAlwaysOnTop());
+          preferences.getPreferences().exportSubtree(out);
           out.close();
         }
         catch (Exception e) {}
@@ -120,13 +113,9 @@ class ApplicationFrame extends JFrame {
     @Override
     public void actionPerformed(ActionEvent event)
     {
-      Preferences preferences = (new ApplicationPreferences()).getPreferences();
-      
-      preferences.putInt("left", getX());
-      preferences.putInt("top", getY());
-      preferences.putInt("width", getWidth());
-      preferences.putInt("height", getHeight());
-      preferences.putBoolean("always-on-top", isAlwaysOnTop());
+      ApplicationPreferences preferences = new ApplicationPreferences();
+      preferences.setPosition(getBounds());
+      preferences.setAlwaysOnTop(isAlwaysOnTop());
       System.exit(0);
     }
   }

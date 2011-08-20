@@ -45,8 +45,21 @@ public class ApplicationPreferences {
     return new Rectangle(new Point(left, top), new Dimension(width, height));
   }
 
+  public void setPosition(Rectangle rect) {
+    Preferences preferences = getPreferences();
+    preferences.putInt("left", (int)rect.getX());
+    preferences.putInt("top", (int)rect.getY());
+    preferences.putInt("width", (int)rect.getWidth());
+    preferences.putInt("height", (int)rect.getHeight());
+  }
+  
   public boolean isAlwaysOnTop() {
     Preferences preferences = getPreferences();
     return preferences.getBoolean("always-on-top", DEFAULT_ALWAYS_ON_TOP);
+  }
+  
+  public void setAlwaysOnTop(boolean isAlwaysOnTop) {
+    Preferences preferences = getPreferences();
+    preferences.putBoolean("always-on-top", isAlwaysOnTop);
   }
 }
