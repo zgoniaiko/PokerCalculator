@@ -11,5 +11,6 @@ public class PokerCalculator {
    */
   public static void main(String[] args) {
     final ApplicationFrame frame = new ApplicationFrame();
+    frame.setVisible(true);
   }
 }

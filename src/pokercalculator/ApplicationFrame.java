@@ -1,5 +1,7 @@
 package pokercalculator;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.event.*;
 import java.io.*;
 import java.util.prefs.*;
@@ -11,10 +13,11 @@ import javax.swing.*;
  */
 class ApplicationFrame extends JFrame {
   private JFileChooser chooser;
+  public static final String TITLE = "Poker Chances Calculator";
   
   ApplicationFrame()
   {
-    setTitle("Poker Chances Calculator");
+    setTitle(TITLE);
 
     setupFileChooser();
     createMenu();
@@ -36,7 +39,6 @@ class ApplicationFrame extends JFrame {
     
     setBounds(preferences.getPosition());
     setAlwaysOnTop(preferences.isAlwaysOnTop());
-    setVisible(true);
   }
 
   private void setupFileChooser() {
@@ -68,8 +70,10 @@ class ApplicationFrame extends JFrame {
   }
 
   private void createPanels() {
-    Box hbox1 = Box.createHorizontalBox();
-    hbox1.add(new DeckPanel());
+    Container contentPane = getContentPane();
+    contentPane.setLayout(new BorderLayout());
+
+    contentPane.add(new DeckPanel());
   }
 
   private class MenuPreferencesExportActionListener implements ActionListener {
