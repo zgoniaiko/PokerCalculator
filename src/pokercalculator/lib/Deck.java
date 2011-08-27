@@ -8,7 +8,7 @@ public class Deck {
 
   private Card[] deck;
   
-  Deck(int numOfCards) {
+  public Deck(int numOfCards) {
     deck = new Card[numOfCards];
     for (int i = 0; i < deck.length; i++) {
       

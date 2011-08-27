@@ -1,5 +1,1 @@
-create panel for deck
-
-create buttons on deck panel
-
-deck should be shown on panel
+CardButton should draw self icon

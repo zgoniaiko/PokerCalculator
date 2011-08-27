@@ -8,12 +8,12 @@ public class Card implements Comparable {
   private Suit suit;
   private Pips pips;
 
-  Card(Suit suit, Pips pips) {
+  public Card(Suit suit, Pips pips) {
     this.suit = suit;
     this.pips = pips;
   }
 
-  Card(String name) {
+  public Card(String name) {
     
     String pipsName = name.substring(0, 1);
     String suitName = name.substring(1, 2);
