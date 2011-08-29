@@ -1,5 +1,7 @@
 package pokercalculator;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import pokercalculator.lib.Card;
 
@@ -10,13 +12,26 @@ import pokercalculator.lib.Card;
 class CardButton extends JButton{
 
   private Card card;
+  public static final String ICON_PATH = "images/small/"; 
   
   public CardButton(Card card) {
     this.card = card;
-    setText(card.toString());
+    
+    String path = ICON_PATH + (card.getRevertedName() + ".gif");
+    setIcon(createImageIcon(path, card.toString()));
   }
   
   public Card getCard() {
     return card;
+  }
+  
+  private ImageIcon createImageIcon(String path, String description) {
+    URL imgURL = getClass().getResource(path);
+    if (imgURL != null) {
+        return new ImageIcon(imgURL, description);
+    } else {
+        System.err.println("Couldn't find file: " + path);
+        return null;
+    }
   }
 }

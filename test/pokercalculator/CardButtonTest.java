@@ -1,5 +1,6 @@
 package pokercalculator;
 
+import javax.swing.ImageIcon;
 import pokercalculator.lib.Card;
 import pokercalculator.lib.Deck;
 import org.junit.After;
@@ -39,6 +40,19 @@ public class CardButtonTest {
     Card card = new Card("As");
     CardButton cardButton = new CardButton(card);
     assertTrue("button contain same card", cardButton.getCard().equals(card));
-    assertEquals("button label match card's name", card.toString(), cardButton.getText());
+    assertEquals("button label match is empty", "", cardButton.getText());
+  }
+  
+  @Test
+  public void testButtonCardContainIconOfCard() {
+    Card card = new Card("As");
+    CardButton cardButton = new CardButton(card);
+    
+    String path = CardButton.ICON_PATH + (card.getRevertedName() + ".gif");
+    java.net.URL imgURL = getClass().getResource(path);
+    ImageIcon icon = new ImageIcon(imgURL, card.toString());
+    
+    assertTrue("button have image icon by default", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
+    assertEquals("button's image description match card name", card.toString(), ((ImageIcon) cardButton.getIcon()).getDescription());
   }
 }

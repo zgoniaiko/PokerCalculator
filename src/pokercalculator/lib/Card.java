@@ -26,6 +26,10 @@ public class Card implements Comparable {
   public String toString() {
     return getPips().toString() + getSuit().toString();
   }
+  
+  public String getRevertedName() {
+    return getSuit().toString().toLowerCase() + getPips().toString().toLowerCase();
+  }
 
   public Suit getSuit()
   {
