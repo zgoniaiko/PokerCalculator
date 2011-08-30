@@ -2,7 +2,6 @@ package pokercalculator;
 
 import javax.swing.ImageIcon;
 import pokercalculator.lib.Card;
-import pokercalculator.lib.Deck;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
