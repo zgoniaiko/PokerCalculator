@@ -19,5 +19,20 @@ public class Hand {
   public Card[] getCards() {
     return hand;
   }
-  
+
+  public void remove() {
+    if(hand[1] != null) {
+      remove(1);
+    } else if(hand[0] != null) {
+      remove(0);
+    }
+  }
+
+  public void remove(int index) {
+    hand[index] = null;
+  }
+
+  void replace(int i, Card card) {
+    hand[i] = card;
+  }  
 }

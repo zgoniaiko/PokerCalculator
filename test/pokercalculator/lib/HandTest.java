@@ -16,6 +16,10 @@ import static org.junit.Assert.*;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class HandTest {
+  private Card ace = new Card("As");
+  private Card king = new Card("Ks");
+  private Card queen = new Card("Qs");
+  private Hand hand;
   
   public HandTest() {
   }
@@ -30,6 +34,9 @@ public class HandTest {
   
   @Before
   public void setUp() {
+    hand = new Hand();
+    hand.add(ace);
+    hand.add(king);
   }
   
   @After
@@ -37,12 +44,9 @@ public class HandTest {
   }
 
   @Test
-  public void testHandHaveTwoCards() {
-    Card ace = new Card("As");
-    Card king = new Card("Ks");
-    Card queen = new Card("Qs");
+  public void testCardsAddedOnHand() {
+    hand = new Hand();
     
-    Hand hand = new Hand();
     hand.add(ace);
     assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
     assertNull("2-nd card is null", (Card) hand.getCards()[1]);
@@ -54,5 +58,30 @@ public class HandTest {
     hand.add(queen);
     assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
     assertTrue("2-nd card is Ks", ((Card) hand.getCards()[1]).equals(king));
+  }
+  
+  @Test
+  public void testReplaceCard() {
+    hand.replace(1, queen);
+    assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
+    assertTrue("2-nd card is Qs", ((Card) hand.getCards()[1]).equals(queen));
+  }
+  
+  @Test
+  public void testRemoveLastCard() {
+    hand.remove();
+    assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
+    assertNull("2-nd card is null", (Card) hand.getCards()[1]);
+
+    hand.remove();
+    assertNull("1-st card is null", (Card) hand.getCards()[0]);
+    assertNull("2-nd card is null", (Card) hand.getCards()[1]);
+  }
+
+  @Test
+  public void testRemoveCardByIndex() {
+    hand.remove(1);
+    assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
+    assertNull("2-nd card is null", (Card) hand.getCards()[1]);
   }
 }
