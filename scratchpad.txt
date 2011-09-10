@@ -1,3 +1,0 @@
-create panel for hand
-
-hand should be able to draw themselves

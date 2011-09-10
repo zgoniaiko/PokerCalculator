@@ -1,5 +1,7 @@
 package pokercalculator;
 
+import pokercalculator.ui.ApplicationFrame;
+
 /**
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
