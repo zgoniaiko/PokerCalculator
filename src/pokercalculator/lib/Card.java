@@ -14,12 +14,7 @@ public class Card implements Comparable {
   }
 
   public Card(String name) {
-    
-    String pipsName = name.substring(0, 1);
-    String suitName = name.substring(1, 2);
-    
-    this.suit = new Suit(suitName);
-    this.pips = new Pips(pipsName);
+    this(new Suit(name.substring(1, 2)), new Pips(name.substring(0, 1)));
   }
 
   @Override

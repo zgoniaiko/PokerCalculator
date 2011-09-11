@@ -16,10 +16,7 @@ class CardButton extends JButton{
   public static final String LARGE_PATH = "images/";
   
   public CardButton(Card card) {
-    this.card = card;
-    
-    String path = ICON_PATH + (card.getRevertedName() + ".gif");
-    setIcon(createImageIcon(path, card.toString()));
+    this(card, false);
   }
   
   public CardButton(Card card, Boolean isLarge) {
