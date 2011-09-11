@@ -1,8 +1,10 @@
 package pokercalculator.ui;
 
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import org.junit.*;
 import static org.junit.Assert.*;
+import pokercalculator.lib.Card;
 
 /**
  *
@@ -40,4 +42,18 @@ public class HandPanelTest {
     assertEquals("1-st component on hand panel is card button", CardButton.class, buttons[0].getClass());
     assertEquals("last component on hand panel is card button", CardButton.class, buttons[buttons.length-1].getClass());
   }
+  
+  @Test
+  public void testHandCardContainLargeIconOfCard() {
+    Component[] buttons = handPanel.getComponents();
+    
+    Card card = ((CardButton) buttons[0]).getCard();
+    
+    String path = CardButton.LARGE_PATH + (card.getRevertedName() + ".gif");
+    java.net.URL imgURL = getClass().getResource(path);
+    ImageIcon icon = new ImageIcon(imgURL, card.toString());
+    
+    assertTrue("button have large image icon", ((ImageIcon) ((CardButton) buttons[0]).getIcon()).getImage().equals(icon.getImage()));
+  }
+  
 }

@@ -54,4 +54,17 @@ public class CardButtonTest {
     assertTrue("button have image icon by default", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
     assertEquals("button's image description match card name", card.toString(), ((ImageIcon) cardButton.getIcon()).getDescription());
   }
+
+  @Test
+  public void testButtonCardContainLargeIconOfCard() {
+    Card card = new Card("As");
+    CardButton cardButton = new CardButton(card, true);
+    
+    String path = CardButton.LARGE_PATH + (card.getRevertedName() + ".gif");
+    java.net.URL imgURL = getClass().getResource(path);
+    ImageIcon icon = new ImageIcon(imgURL, card.toString());
+    
+    assertTrue("button have image icon by default", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
+    assertEquals("button's image description match card name", card.toString(), ((ImageIcon) cardButton.getIcon()).getDescription());
+  }
 }
