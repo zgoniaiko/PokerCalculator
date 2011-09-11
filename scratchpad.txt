@@ -1,0 +1,11 @@
+hand should show large cards
+
+table should show large cards
+
+click on hand button should clean card
+
+click on table button should clean card
+
+cards on hand or on table should be disabled on deck panel
+
+hand panel should be synced with model of hand

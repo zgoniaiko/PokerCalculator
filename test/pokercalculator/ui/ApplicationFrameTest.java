@@ -78,7 +78,8 @@ public class ApplicationFrameTest {
 
     Box handBox = (Box) vBox.getComponent(0);
     assertEquals("1-st horizontal box on vertical box", BoxLayout.X_AXIS, ((BoxLayout) handBox.getLayout()).getAxis());
-    assertEquals("hand panel placed on frame", HandPanel.class, handBox.getComponent(0).getClass());
+    assertEquals("hand panel placed on box", HandPanel.class, handBox.getComponent(0).getClass());
+    assertEquals("table panel placed on box", TablePanel.class, handBox.getComponent(1).getClass());
     
     Box deckBox = (Box) vBox.getComponent(1);
     assertEquals("2-nd horizontal box on vertical box", BoxLayout.X_AXIS, ((BoxLayout) deckBox.getLayout()).getAxis());

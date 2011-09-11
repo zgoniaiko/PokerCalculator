@@ -77,6 +77,7 @@ public class ApplicationFrame extends JFrame {
 
     Box hbox1 = Box.createHorizontalBox();
     hbox1.add(new HandPanel());
+    hbox1.add(new TablePanel());
     
     Box hbox2 = Box.createHorizontalBox();
     hbox2.add(new DeckPanel());
