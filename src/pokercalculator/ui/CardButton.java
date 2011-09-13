@@ -15,14 +15,18 @@ public class CardButton extends JButton {
   
   public CardButton(Card card) {
     this.card = card;
-    
-    String path;
-    path = getIconPath() + (card.getRevertedName() + ".gif");
-    setIcon(createImageIcon(path, card.toString()));
   }
   
   public Card getCard() {
     return card;
+  }
+
+  public void updateIcon() {
+    setIcon(createImageIcon(getIconFilename(), card.toString()));
+  }
+
+  public String getIconFilename() {
+    return getIconPath() + card.getRevertedName() + ".gif";
   }
   
   public String getIconPath() {

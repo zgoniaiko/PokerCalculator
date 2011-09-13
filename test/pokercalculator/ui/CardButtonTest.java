@@ -46,6 +46,7 @@ public class CardButtonTest {
   public void testButtonCardContainIconOfCard() {
     Card card = new Card("As");
     CardButton cardButton = new CardButton(card);
+    cardButton.updateIcon();
     
     String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL imgURL = getClass().getResource(path);

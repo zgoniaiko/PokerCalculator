@@ -18,6 +18,7 @@ class DeckPanel extends JPanel {
     
     for (int i=0; i<deck.countCards(); i++) {
       CardButton cardButton = new CardButton(deck.getCardByIndex(i));
+      cardButton.updateIcon();
       
       add(cardButton);
     }

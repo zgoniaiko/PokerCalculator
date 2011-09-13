@@ -38,7 +38,8 @@ public class CardLargeButtonTest {
   public void testButtonCardContainLargeIconOfCard() {
     Card card = new Card("As");
     CardLargeButton cardButton = new CardLargeButton(card);
-    
+    cardButton.updateIcon();
+            
     String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL imgURL = getClass().getResource(path);
     ImageIcon icon = new ImageIcon(imgURL, card.toString());

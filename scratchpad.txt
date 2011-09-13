@@ -9,3 +9,8 @@ click on table button should set icon for undefined card
 cards on hand or on table should be disabled on deck panel
 
 hand panel should be synced with model of hand
+
+---
+
+cardButton = new CardButton() and cardButton.updateIcon() should run together
+possible ways to fix it? Factory method? Builder?
