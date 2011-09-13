@@ -11,6 +11,7 @@ import pokercalculator.lib.Card;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class TablePanelTest {
+  private CardLargeButton cardButton;
   private TablePanel tablePanel;
   
   public TablePanelTest() {
@@ -38,21 +39,22 @@ public class TablePanelTest {
     Component[] buttons = tablePanel.getComponents();
 
     assertEquals("table panel contain 5 components", 5, buttons.length);
-    assertEquals("1-st component on hand panel is card button", CardButton.class, buttons[0].getClass());
-    assertEquals("last component on hand panel is card button", CardButton.class, buttons[buttons.length-1].getClass());
+    assertEquals("1-st component on hand panel is card button", CardLargeButton.class, buttons[0].getClass());
+    assertEquals("last component on hand panel is card button", CardLargeButton.class, buttons[buttons.length-1].getClass());
   }
   
   @Test
   public void testHandCardContainLargeIconOfCard() {
     Component[] buttons = tablePanel.getComponents();
+    cardButton = (CardLargeButton) buttons[0];
     
-    Card card = ((CardButton) buttons[0]).getCard();
+    Card card = cardButton.getCard();
     
-    String path = CardButton.LARGE_PATH + (card.getRevertedName() + ".gif");
+    String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL imgURL = getClass().getResource(path);
     ImageIcon icon = new ImageIcon(imgURL, card.toString());
     
-    assertTrue("button have large image icon", ((ImageIcon) ((CardButton) buttons[0]).getIcon()).getImage().equals(icon.getImage()));
+    assertTrue("button have large image icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
   }
   
 }

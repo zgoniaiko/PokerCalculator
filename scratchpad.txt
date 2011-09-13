@@ -1,10 +1,10 @@
-hand should show large cards
-
-table should show large cards
-
 click on hand button should clean card
 
+click on hand button should set icon for undefined card
+
 click on table button should clean card
+
+click on table button should set icon for undefined card
 
 cards on hand or on table should be disabled on deck panel
 

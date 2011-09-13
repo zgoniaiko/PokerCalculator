@@ -39,21 +39,22 @@ public class HandPanelTest {
     Component[] buttons = handPanel.getComponents();
 
     assertEquals("hand panel contain 2 components", 2, buttons.length);
-    assertEquals("1-st component on hand panel is card button", CardButton.class, buttons[0].getClass());
-    assertEquals("last component on hand panel is card button", CardButton.class, buttons[buttons.length-1].getClass());
+    assertEquals("1-st component on hand panel is card button", CardLargeButton.class, buttons[0].getClass());
+    assertEquals("last component on hand panel is card button", CardLargeButton.class, buttons[buttons.length-1].getClass());
   }
   
   @Test
   public void testHandCardContainLargeIconOfCard() {
     Component[] buttons = handPanel.getComponents();
+
+    CardLargeButton cardButton = (CardLargeButton) buttons[0];
+    Card card = cardButton.getCard();
     
-    Card card = ((CardButton) buttons[0]).getCard();
-    
-    String path = CardButton.LARGE_PATH + (card.getRevertedName() + ".gif");
+    String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL imgURL = getClass().getResource(path);
     ImageIcon icon = new ImageIcon(imgURL, card.toString());
     
-    assertTrue("button have large image icon", ((ImageIcon) ((CardButton) buttons[0]).getIcon()).getImage().equals(icon.getImage()));
+    assertTrue("button have large image icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
   }
   
 }

@@ -1,21 +1,21 @@
+/*
+ * To change this template, choose Tools | Templates and open the template in
+ * the editor.
+ */
 package pokercalculator.ui;
 
 import javax.swing.ImageIcon;
-import pokercalculator.lib.Card;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
+import pokercalculator.lib.Card;
 
 /**
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
-public class CardButtonTest {
+public class CardLargeButtonTest {
   
-  public CardButtonTest() {
+  public CardLargeButtonTest() {
   }
 
   @BeforeClass
@@ -35,17 +35,9 @@ public class CardButtonTest {
   }
 
   @Test
-  public void testButtonCardContainSameCard() {
+  public void testButtonCardContainLargeIconOfCard() {
     Card card = new Card("As");
-    CardButton cardButton = new CardButton(card);
-    assertTrue("button contain same card", cardButton.getCard().equals(card));
-    assertEquals("button label match is empty", "", cardButton.getText());
-  }
-  
-  @Test
-  public void testButtonCardContainIconOfCard() {
-    Card card = new Card("As");
-    CardButton cardButton = new CardButton(card);
+    CardLargeButton cardButton = new CardLargeButton(card);
     
     String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL imgURL = getClass().getResource(path);
