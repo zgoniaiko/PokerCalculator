@@ -11,7 +11,7 @@ import pokercalculator.lib.Card;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class TablePanelTest {
-  private CardLargeButton cardButton;
+  private CardButton cardButton;
   private TablePanel tablePanel;
   
   public TablePanelTest() {

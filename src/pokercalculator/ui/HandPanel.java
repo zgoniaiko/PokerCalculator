@@ -10,10 +10,10 @@ import pokercalculator.lib.Card;
 public class HandPanel extends JPanel {
   
   public HandPanel() {
-      CardLargeButton card1 = new CardLargeButton(new Card("As"));
+      CardButton card1 = new CardLargeButton(new Card("As"));
       card1.updateIcon();
       
-      CardLargeButton card2 = new CardLargeButton(new Card("Ks"));
+      CardButton card2 = new CardLargeButton(new Card("Ks"));
       card2.updateIcon();
       
       add(card1);

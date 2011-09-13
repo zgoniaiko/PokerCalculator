@@ -48,8 +48,7 @@ public class CardButtonTest {
     CardButton cardButton = new CardButton(card);
     cardButton.updateIcon();
     
-    String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
-    java.net.URL imgURL = getClass().getResource(path);
+    java.net.URL imgURL = getClass().getResource(cardButton.getIconFilename());
     ImageIcon icon = new ImageIcon(imgURL, card.toString());
     
     assertTrue("button have image icon by default", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));

@@ -47,7 +47,7 @@ public class HandPanelTest {
   public void testHandCardContainLargeIconOfCard() {
     Component[] buttons = handPanel.getComponents();
 
-    CardLargeButton cardButton = (CardLargeButton) buttons[0];
+    CardButton cardButton = (CardButton) buttons[0];
     Card card = cardButton.getCard();
     
     String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");

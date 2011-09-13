@@ -9,19 +9,19 @@ import pokercalculator.lib.Card;
  */
 public class TablePanel extends JPanel {
   public TablePanel() {
-      CardLargeButton card1 = new CardLargeButton(new Card("Qs"));
+      CardButton card1 = new CardLargeButton(new Card("Qs"));
       card1.updateIcon();
       
-      CardLargeButton card2 = new CardLargeButton(new Card("Js"));
+      CardButton card2 = new CardLargeButton(new Card("Js"));
       card2.updateIcon();
 
-      CardLargeButton card3 = new CardLargeButton(new Card("Ts"));
+      CardButton card3 = new CardLargeButton(new Card("Ts"));
       card3.updateIcon();
       
-      CardLargeButton card4 = new CardLargeButton(new Card("9s"));
+      CardButton card4 = new CardLargeButton(new Card("9s"));
       card4.updateIcon();
       
-      CardLargeButton card5 = new CardLargeButton(new Card("8s"));
+      CardButton card5 = new CardLargeButton(new Card("8s"));
       card5.updateIcon();
             
       add(card1);
