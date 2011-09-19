@@ -58,4 +58,14 @@ public class DeckPanelTest {
     assertEquals("layout have gap between columns", 2, ((GridLayout) layout).getHgap());
     assertEquals("layout have gap between rows", 2, ((GridLayout) layout).getVgap());
   }
+  
+  @Test
+  public void testDeckCardDisabledAfterClick() {
+    Component[] buttons = deckPanel.getComponents();
+    CardButton cardButton = (CardButton) buttons[0];
+            
+    assertTrue("deck button enabled", cardButton.isEnabled());
+    cardButton.doClick();
+    assertFalse("deck button disabled after click", cardButton.isEnabled());
+  }
 }

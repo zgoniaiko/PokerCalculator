@@ -1,3 +1,8 @@
+click by deck card should try to set hand card and make deck button disabled
+in case hand can't accept card, deck should try to set table card and make deck button disabled
+in case card wasn't been accepted by hand or table, deck nutton should be left enabled
+
+
 cards on hand or on table should be disabled on deck panel
 
 hand panel should be synced with model of hand
