@@ -21,16 +21,28 @@ public class CardButton extends JButton {
     return card;
   }
 
+  public void removeCard() {
+    this.card = null;
+  }
+  
   public void updateIcon() {
-    setIcon(createImageIcon(getIconFilename(), card.toString()));
+    setIcon(createImageIcon(getIconFilename(), getCardName()));
   }
 
   public String getIconFilename() {
-    return getIconPath() + card.getRevertedName() + ".gif";
+    return getIconPath() + getRevertedCardName() + ".gif";
   }
   
   public String getIconPath() {
     return "images/small/";
+  }
+  
+  protected String getCardName() {
+    return (!(card == null)) ? card.toString() : "ec";
+  }
+  
+  protected String getRevertedCardName() {
+    return (!(card == null)) ? card.getRevertedName() : "ec";
   }
   
   private ImageIcon createImageIcon(String path, String description) {

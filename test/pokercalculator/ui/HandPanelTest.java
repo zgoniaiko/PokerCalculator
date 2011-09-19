@@ -57,4 +57,24 @@ public class HandPanelTest {
     assertTrue("button have large image icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
   }
   
+  @Test
+  public void testHandCardContainLargeIconOfEmptyCard() {
+    Component[] buttons = handPanel.getComponents();
+
+    CardButton cardButton = (CardButton) buttons[0];
+    Card card = cardButton.getCard();
+    
+    String oldPath = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
+    java.net.URL oldImgURL = getClass().getResource(oldPath);
+    ImageIcon oldIcon = new ImageIcon(oldImgURL, card.toString());
+    
+    String path = cardButton.getIconPath() + "ec.gif";
+    java.net.URL imgURL = getClass().getResource(path);
+    ImageIcon icon = new ImageIcon(imgURL, card.toString());
+        
+    assertTrue("button have large image icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(oldIcon.getImage()));
+    cardButton.doClick();
+    assertNull("button have don't have card", cardButton.getCard());
+    assertTrue("button have large empty card icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
+  }
 }
