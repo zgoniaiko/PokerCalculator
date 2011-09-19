@@ -1,27 +1,26 @@
 package pokercalculator.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import pokercalculator.lib.Card;
+import pokercalculator.lib.Hand;
 
 /**
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class HandPanel extends JPanel {
+  private Hand hand;
   
-  public HandPanel() {
-      CardButton card1 = new CardLargeButton(new Card("As"));
-      card1.updateIcon();
-      card1.addActionListener(new LargeCardActionListener());
-      
-      CardButton card2 = new CardLargeButton(new Card("Ks"));
-      card2.updateIcon();
-      card2.addActionListener(new LargeCardActionListener());
-      
-      add(card1);
-      add(card2);
+  public HandPanel(Hand hand) {
+    this.hand = hand;
+    Card[] cards = this.hand.getCards();
+    
+    for (int i=0; i<cards.length; i++) {
+      CardButton cardButton = new CardLargeButton(cards[0]);
+      cardButton.updateIcon();
+      cardButton.addActionListener(new LargeCardActionListener());
+              
+      add(cardButton);
+    }
   }
-  
 }

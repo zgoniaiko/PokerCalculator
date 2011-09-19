@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import org.junit.*;
 import static org.junit.Assert.*;
 import pokercalculator.lib.Card;
+import pokercalculator.lib.Hand;
 
 /**
  *
@@ -13,6 +14,8 @@ import pokercalculator.lib.Card;
 public class HandPanelTest {
 
   private HandPanel handPanel;
+  private Hand hand;
+  private Hand emptyHand;
   
   public HandPanelTest() {
   }
@@ -27,7 +30,12 @@ public class HandPanelTest {
   
   @Before
   public void setUp() {
-    handPanel = new HandPanel();
+    hand = new Hand();
+    hand.add(new Card("As"));
+    hand.add(new Card("Ks"));
+    
+    emptyHand = new Hand();
+    handPanel = new HandPanel(hand);
   }
   
   @After
@@ -76,5 +84,31 @@ public class HandPanelTest {
     cardButton.doClick();
     assertNull("button have don't have card", cardButton.getCard());
     assertTrue("button have large empty card icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
+  }
+  
+  @Test
+  public void testHandCardsEmptyByDefault() {
+    handPanel = new HandPanel(emptyHand);
+    Component[] buttons = handPanel.getComponents();
+
+    CardButton cardButton = (CardButton) buttons[0];
+    Card card = cardButton.getCard();
+    
+    String path = cardButton.getIconPath() + "ec.gif";
+    java.net.URL imgURL = getClass().getResource(path);
+    ImageIcon icon = new ImageIcon(imgURL, null);
+        
+    assertNull("button don't have card", cardButton.getCard());
+    assertTrue("button have large empty card icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
+  }
+
+  @Test
+  @Ignore
+  public void testRemoveOfCardFromHandShouldRemoveCardFromPanel() {
+    hand.remove();
+    Component[] buttons = handPanel.getComponents();
+    CardButton cardButton = (CardButton) buttons[1];
+    
+    assertNull("button don't have card", cardButton.getCard());
   }
 }

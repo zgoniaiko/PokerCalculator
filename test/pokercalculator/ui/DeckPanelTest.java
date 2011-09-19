@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pokercalculator.lib.Deck;
 
 /**
  *
@@ -33,7 +34,7 @@ public class DeckPanelTest {
   
   @Before
   public void setUp() {
-    deckPanel = new DeckPanel();
+    deckPanel = new DeckPanel(new Deck(52));
   }
   
   @After

@@ -12,13 +12,14 @@ import pokercalculator.lib.Deck;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 class DeckPanel extends JPanel {
+  private Deck deck;
 
-  public DeckPanel() {
-    Deck deck = new Deck(52);
+  public DeckPanel(Deck deck) {
+    this.deck = deck;
     
     setLayout(new GridLayout(4, 0, 2, 2));
     
-    for (int i=0; i<deck.countCards(); i++) {
+    for (int i=0; i<this.deck.countCards(); i++) {
       CardButton cardButton = new CardButton(deck.getCardByIndex(i));
       cardButton.updateIcon();
       cardButton.addActionListener(new ActionListener() {

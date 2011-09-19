@@ -5,7 +5,9 @@ in case card wasn't been accepted by hand or table, deck nutton should be left e
 
 cards on hand or on table should be disabled on deck panel
 
+
 hand panel should be synced with model of hand
+http://www.java2s.com/Code/Java/Design-Pattern/AsimpledemoofObservableandObserver.htm
 
 ---
 

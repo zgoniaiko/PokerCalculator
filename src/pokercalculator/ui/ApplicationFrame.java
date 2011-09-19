@@ -8,6 +8,8 @@ import java.util.prefs.*;
 import javax.swing.*;
 import pokercalculator.ApplicationPreferences;
 import pokercalculator.XmlFileFilter;
+import pokercalculator.lib.Deck;
+import pokercalculator.lib.Hand;
 
 /**
  *
@@ -17,9 +19,15 @@ public class ApplicationFrame extends JFrame {
   private JFileChooser chooser;
   public static final String TITLE = "Poker Chances Calculator";
   
+  private Deck deck;
+  private Hand hand;
+  
   public ApplicationFrame()
   {
     setTitle(TITLE);
+
+    deck = new Deck(52);
+    hand = new Hand();
 
     setupFileChooser();
     createMenu();
@@ -76,11 +84,11 @@ public class ApplicationFrame extends JFrame {
     contentPane.setLayout(new BorderLayout());
 
     Box hbox1 = Box.createHorizontalBox();
-    hbox1.add(new HandPanel());
+    hbox1.add(new HandPanel(hand));
     hbox1.add(new TablePanel());
     
     Box hbox2 = Box.createHorizontalBox();
-    hbox2.add(new DeckPanel());
+    hbox2.add(new DeckPanel(deck));
     
     Box vbox = Box.createVerticalBox();
     vbox.add(hbox1);

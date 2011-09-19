@@ -8,7 +8,7 @@ public class Hand {
     hand = new Card[2];
   }
 
-  void add(Card card) {
+  public void add(Card card) {
     if (hand[0] == null) {
       hand[0] = card;
     } else if (hand[1] == null) {
