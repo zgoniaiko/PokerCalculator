@@ -36,7 +36,7 @@ public class TablePanelTest {
 
   @Test
   public void testButtonsPlacedOnPanel() {
-    Component[] buttons = tablePanel.getComponents();
+    CardButton[] buttons = tablePanel.getButtons();
 
     assertEquals("table panel contain 5 components", 5, buttons.length);
     assertEquals("1-st component on hand panel is card button", CardLargeButton.class, buttons[0].getClass());
@@ -45,8 +45,8 @@ public class TablePanelTest {
   
   @Test
   public void testTableCardContainLargeIconOfCard() {
-    Component[] buttons = tablePanel.getComponents();
-    cardButton = (CardButton) buttons[0];
+    CardButton[] buttons = tablePanel.getButtons();
+    cardButton = buttons[0];
     
     Card card = cardButton.getCard();
     
@@ -59,9 +59,9 @@ public class TablePanelTest {
   
   @Test
   public void testTableCardContainLargeIconOfEmptyCard() {
-    Component[] buttons = tablePanel.getComponents();
-
-    cardButton = (CardButton) buttons[0];
+    CardButton[] buttons = tablePanel.getButtons();
+    cardButton = buttons[0];
+    
     Card card = cardButton.getCard();
     
     String oldPath = cardButton.getIconPath() + (card.getRevertedName() + ".gif");

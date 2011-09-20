@@ -8,6 +8,7 @@ cards on hand or on table should be disabled on deck panel
 
 hand panel should be synced with model of hand
 http://www.java2s.com/Code/Java/Design-Pattern/AsimpledemoofObservableandObserver.htm
+http://zetcode.com/tutorials/javaswingtutorial/swingmodels/
 
 ---
 

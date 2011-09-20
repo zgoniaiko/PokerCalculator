@@ -10,17 +10,23 @@ import pokercalculator.lib.Hand;
  */
 public class HandPanel extends JPanel {
   private Hand hand;
+  private CardButton[] buttons;
   
   public HandPanel(Hand hand) {
     this.hand = hand;
     Card[] cards = this.hand.getCards();
+    buttons = new CardButton[cards.length];
     
     for (int i=0; i<cards.length; i++) {
-      CardButton cardButton = new CardLargeButton(cards[0]);
-      cardButton.updateIcon();
-      cardButton.addActionListener(new LargeCardActionListener());
+      buttons[i] = new CardLargeButton(cards[i]);
+      buttons[i].updateIcon();
+      buttons[i].addActionListener(new LargeCardActionListener());
               
-      add(cardButton);
+      add(buttons[i]);
     }
+  }
+
+  public CardButton[] getButtons() {
+    return buttons;
   }
 }

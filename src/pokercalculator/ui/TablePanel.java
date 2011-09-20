@@ -8,31 +8,39 @@ import pokercalculator.lib.Card;
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
 public class TablePanel extends JPanel {
+  private CardButton[] buttons;
+  
   public TablePanel() {
-      CardButton card1 = new CardLargeButton(new Card("Qs"));
-      card1.updateIcon();
-      card1.addActionListener(new LargeCardActionListener());
+      buttons = new CardButton[5];
       
-      CardButton card2 = new CardLargeButton(new Card("Js"));
-      card2.updateIcon();
-      card2.addActionListener(new LargeCardActionListener());
+      buttons[0] = new CardLargeButton(new Card("Qs"));
+      buttons[0].updateIcon();
+      buttons[0].addActionListener(new LargeCardActionListener());
+      
+      buttons[1] = new CardLargeButton(new Card("Js"));
+      buttons[1].updateIcon();
+      buttons[1].addActionListener(new LargeCardActionListener());
 
-      CardButton card3 = new CardLargeButton(new Card("Ts"));
-      card3.updateIcon();
-      card3.addActionListener(new LargeCardActionListener());
+      buttons[2] = new CardLargeButton(new Card("Ts"));
+      buttons[2].updateIcon();
+      buttons[2].addActionListener(new LargeCardActionListener());
       
-      CardButton card4 = new CardLargeButton(new Card("9s"));
-      card4.updateIcon();
-      card4.addActionListener(new LargeCardActionListener());
+      buttons[3] = new CardLargeButton(new Card("9s"));
+      buttons[3].updateIcon();
+      buttons[3].addActionListener(new LargeCardActionListener());
       
-      CardButton card5 = new CardLargeButton(new Card("8s"));
-      card5.updateIcon();
-      card5.addActionListener(new LargeCardActionListener());
+      buttons[4] = new CardLargeButton(new Card("8s"));
+      buttons[4].updateIcon();
+      buttons[4].addActionListener(new LargeCardActionListener());
             
-      add(card1);
-      add(card2);
-      add(card3);
-      add(card4);
-      add(card5);
-  }  
+      add(buttons[0]);
+      add(buttons[1]);
+      add(buttons[2]);
+      add(buttons[3]);
+      add(buttons[4]);
+  }
+
+  public CardButton[] getButtons() {
+    return buttons;
+  }
 }

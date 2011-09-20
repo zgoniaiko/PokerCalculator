@@ -44,7 +44,7 @@ public class HandPanelTest {
 
   @Test
   public void testButtonsPlacedOnPanel() {
-    Component[] buttons = handPanel.getComponents();
+    CardButton[] buttons = handPanel.getButtons();
 
     assertEquals("hand panel contain 2 components", 2, buttons.length);
     assertEquals("1-st component on hand panel is card button", CardLargeButton.class, buttons[0].getClass());
@@ -53,9 +53,8 @@ public class HandPanelTest {
   
   @Test
   public void testHandCardContainLargeIconOfCard() {
-    Component[] buttons = handPanel.getComponents();
-
-    CardButton cardButton = (CardButton) buttons[0];
+    CardButton[] buttons = handPanel.getButtons();
+    CardButton cardButton = buttons[0];
     Card card = cardButton.getCard();
     
     String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
@@ -67,9 +66,8 @@ public class HandPanelTest {
   
   @Test
   public void testHandCardContainLargeIconOfEmptyCard() {
-    Component[] buttons = handPanel.getComponents();
-
-    CardButton cardButton = (CardButton) buttons[0];
+    CardButton[] buttons = handPanel.getButtons();
+    CardButton cardButton = buttons[0];
     Card card = cardButton.getCard();
     
     String oldPath = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
@@ -89,9 +87,9 @@ public class HandPanelTest {
   @Test
   public void testHandCardsEmptyByDefault() {
     handPanel = new HandPanel(emptyHand);
-    Component[] buttons = handPanel.getComponents();
+    CardButton[] buttons = handPanel.getButtons();
 
-    CardButton cardButton = (CardButton) buttons[0];
+    CardButton cardButton = buttons[0];
     Card card = cardButton.getCard();
     
     String path = cardButton.getIconPath() + "ec.gif";
@@ -106,9 +104,8 @@ public class HandPanelTest {
   @Ignore
   public void testRemoveOfCardFromHandShouldRemoveCardFromPanel() {
     hand.remove();
-    Component[] buttons = handPanel.getComponents();
-    CardButton cardButton = (CardButton) buttons[1];
+    CardButton[] buttons = handPanel.getButtons();
     
-    assertNull("button don't have card", cardButton.getCard());
+    assertNull("button don't have card", (buttons[1]).getCard());
   }
 }

@@ -13,16 +13,18 @@ import pokercalculator.lib.Deck;
  */
 class DeckPanel extends JPanel {
   private Deck deck;
+  private CardButton[] buttons;
 
   public DeckPanel(Deck deck) {
     this.deck = deck;
+    buttons = new CardButton[this.deck.countCards()];
     
     setLayout(new GridLayout(4, 0, 2, 2));
     
     for (int i=0; i<this.deck.countCards(); i++) {
-      CardButton cardButton = new CardButton(deck.getCardByIndex(i));
-      cardButton.updateIcon();
-      cardButton.addActionListener(new ActionListener() {
+      buttons[i] = new CardButton(deck.getCardByIndex(i));
+      buttons[i].updateIcon();
+      buttons[i].addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
           CardButton btn = (CardButton) e.getSource();
@@ -30,8 +32,11 @@ class DeckPanel extends JPanel {
         }
       });
               
-      add(cardButton);
+      add(buttons[i]);
     }
   }
-  
+
+  public CardButton[] getButtons() {
+    return buttons;
+  }
 }

@@ -43,7 +43,8 @@ public class DeckPanelTest {
 
   @Test
   public void testButtonsPlacedOnPanel() {
-    Component[] buttons = deckPanel.getComponents();
+    CardButton[] buttons = deckPanel.getButtons();
+    
     assertEquals("deck panel contain 52 components", 52, buttons.length);
     assertEquals("1-st component on deck panel is card button", CardButton.class, buttons[0].getClass());
     assertEquals("last component on deck panel is card button", CardButton.class, buttons[buttons.length-1].getClass());
@@ -62,8 +63,8 @@ public class DeckPanelTest {
   
   @Test
   public void testDeckCardDisabledAfterClick() {
-    Component[] buttons = deckPanel.getComponents();
-    CardButton cardButton = (CardButton) buttons[0];
+    CardButton[] buttons = deckPanel.getButtons();
+    CardButton cardButton = buttons[0];
             
     assertTrue("deck button enabled", cardButton.isEnabled());
     cardButton.doClick();
