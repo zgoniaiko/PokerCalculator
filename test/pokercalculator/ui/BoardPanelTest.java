@@ -10,11 +10,11 @@ import pokercalculator.lib.Card;
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
-public class TablePanelTest {
+public class BoardPanelTest {
   private CardButton cardButton;
-  private TablePanel tablePanel;
-  
-  public TablePanelTest() {
+  private BoardPanel boardPanel;
+
+  public BoardPanelTest() {
   }
 
   @BeforeClass
@@ -24,54 +24,54 @@ public class TablePanelTest {
   @AfterClass
   public static void tearDownClass() throws Exception {
   }
-  
+
   @Before
   public void setUp() {
-    tablePanel = new TablePanel();
+    boardPanel = new BoardPanel();
   }
-  
+
   @After
   public void tearDown() {
   }
 
   @Test
   public void testButtonsPlacedOnPanel() {
-    CardButton[] buttons = tablePanel.getButtons();
+    CardButton[] buttons = boardPanel.getButtons();
 
-    assertEquals("table panel contain 5 components", 5, buttons.length);
+    assertEquals("board panel contain 5 components", 5, buttons.length);
     assertEquals("1-st component on hand panel is card button", CardLargeButton.class, buttons[0].getClass());
     assertEquals("last component on hand panel is card button", CardLargeButton.class, buttons[buttons.length-1].getClass());
   }
-  
+
   @Test
-  public void testTableCardContainLargeIconOfCard() {
-    CardButton[] buttons = tablePanel.getButtons();
+  public void testBoardCardContainLargeIconOfCard() {
+    CardButton[] buttons = boardPanel.getButtons();
     cardButton = buttons[0];
-    
+
     Card card = cardButton.getCard();
-    
+
     String path = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL imgURL = getClass().getResource(path);
     ImageIcon icon = new ImageIcon(imgURL, card.toString());
-    
+
     assertTrue("button have large image icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(icon.getImage()));
   }
-  
+
   @Test
-  public void testTableCardContainLargeIconOfEmptyCard() {
-    CardButton[] buttons = tablePanel.getButtons();
+  public void testBoardCardContainLargeIconOfEmptyCard() {
+    CardButton[] buttons = boardPanel.getButtons();
     cardButton = buttons[0];
-    
+
     Card card = cardButton.getCard();
-    
+
     String oldPath = cardButton.getIconPath() + (card.getRevertedName() + ".gif");
     java.net.URL oldImgURL = getClass().getResource(oldPath);
     ImageIcon oldIcon = new ImageIcon(oldImgURL, card.toString());
-    
+
     String path = cardButton.getIconPath() + "ec.gif";
     java.net.URL imgURL = getClass().getResource(path);
     ImageIcon icon = new ImageIcon(imgURL, card.toString());
-        
+
     assertTrue("button have large image icon", ((ImageIcon) cardButton.getIcon()).getImage().equals(oldIcon.getImage()));
     cardButton.doClick();
     assertNull("button have don't have card", cardButton.getCard());

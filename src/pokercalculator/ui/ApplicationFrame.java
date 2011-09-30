@@ -18,10 +18,10 @@ import pokercalculator.lib.Hand;
 public class ApplicationFrame extends JFrame {
   private JFileChooser chooser;
   public static final String TITLE = "Poker Chances Calculator";
-  
+
   private Deck deck;
   private Hand hand;
-  
+
   public ApplicationFrame()
   {
     setTitle(TITLE);
@@ -32,7 +32,7 @@ public class ApplicationFrame extends JFrame {
     setupFileChooser();
     createMenu();
     createPanels();
-    
+
     addWindowListener(new WindowAdapter() {
       @Override
         public void windowClosing(WindowEvent ev) {
@@ -44,9 +44,9 @@ public class ApplicationFrame extends JFrame {
         }
     });
 
-    
+
     ApplicationPreferences preferences = new ApplicationPreferences();
-    
+
     setBounds(preferences.getPosition());
     setAlwaysOnTop(preferences.isAlwaysOnTop());
   }
@@ -85,15 +85,15 @@ public class ApplicationFrame extends JFrame {
 
     Box hbox1 = Box.createHorizontalBox();
     hbox1.add(new HandPanel(hand));
-    hbox1.add(new TablePanel());
-    
+    hbox1.add(new BoardPanel());
+
     Box hbox2 = Box.createHorizontalBox();
     hbox2.add(new DeckPanel(deck));
-    
+
     Box vbox = Box.createVerticalBox();
     vbox.add(hbox1);
     vbox.add(hbox2);
-    
+
     contentPane.add(vbox);
   }
 
@@ -116,7 +116,7 @@ public class ApplicationFrame extends JFrame {
       }
     }
   }
-  
+
   private class MenuPreferencesImportActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event)

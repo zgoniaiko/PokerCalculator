@@ -6,9 +6,9 @@ import pokercalculator.lib.Card;
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
-public class TablePanel extends LargeCardButtonPanel {
+public class BoardPanel extends LargeCardButtonPanel {
 
-  public TablePanel() {
+  public BoardPanel() {
     buttons = new CardButton[5];
 
     LargeCardActionListener largeCardActionListener = new LargeCardActionListener();
