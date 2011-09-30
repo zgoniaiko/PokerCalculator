@@ -1,10 +1,10 @@
 package pokercalculator.lib;
 
-public class Hand {
-  
+public class Player {
+
   private Card[] hand;
 
-  public Hand() {
+  public Player() {
     hand = new Card[2];
   }
 
@@ -15,7 +15,7 @@ public class Hand {
       hand[1] = card;
     }
   }
-  
+
   public Card[] getCards() {
     return hand;
   }
@@ -34,5 +34,5 @@ public class Hand {
 
   void replace(int i, Card card) {
     hand[i] = card;
-  }  
+  }
 }

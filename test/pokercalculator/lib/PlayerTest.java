@@ -15,13 +15,13 @@ import static org.junit.Assert.*;
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
-public class HandTest {
+public class PlayerTest {
   private Card ace = new Card("As");
   private Card king = new Card("Ks");
   private Card queen = new Card("Qs");
-  private Hand hand;
-  
-  public HandTest() {
+  private Player hand;
+
+  public PlayerTest() {
   }
 
   @BeforeClass
@@ -31,42 +31,42 @@ public class HandTest {
   @AfterClass
   public static void tearDownClass() throws Exception {
   }
-  
+
   @Before
   public void setUp() {
-    hand = new Hand();
+    hand = new Player();
     hand.add(ace);
     hand.add(king);
   }
-  
+
   @After
   public void tearDown() {
   }
 
   @Test
   public void testCardsAddedOnHand() {
-    hand = new Hand();
-    
+    hand = new Player();
+
     hand.add(ace);
     assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
     assertNull("2-nd card is null", (Card) hand.getCards()[1]);
-    
+
     hand.add(king);
     assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
     assertTrue("2-nd card is Ks", ((Card) hand.getCards()[1]).equals(king));
-    
+
     hand.add(queen);
     assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
     assertTrue("2-nd card is Ks", ((Card) hand.getCards()[1]).equals(king));
   }
-  
+
   @Test
   public void testReplaceCard() {
     hand.replace(1, queen);
     assertTrue("1-st card is As", ((Card) hand.getCards()[0]).equals(ace));
     assertTrue("2-nd card is Qs", ((Card) hand.getCards()[1]).equals(queen));
   }
-  
+
   @Test
   public void testRemoveLastCard() {
     hand.remove();

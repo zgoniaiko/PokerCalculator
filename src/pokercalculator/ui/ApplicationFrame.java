@@ -9,7 +9,7 @@ import javax.swing.*;
 import pokercalculator.ApplicationPreferences;
 import pokercalculator.XmlFileFilter;
 import pokercalculator.lib.Deck;
-import pokercalculator.lib.Hand;
+import pokercalculator.lib.Player;
 
 /**
  *
@@ -20,14 +20,14 @@ public class ApplicationFrame extends JFrame {
   public static final String TITLE = "Poker Chances Calculator";
 
   private Deck deck;
-  private Hand hand;
+  private Player hand;
 
   public ApplicationFrame()
   {
     setTitle(TITLE);
 
     deck = new Deck(52);
-    hand = new Hand();
+    hand = new Player();
 
     setupFileChooser();
     createMenu();
@@ -84,7 +84,7 @@ public class ApplicationFrame extends JFrame {
     contentPane.setLayout(new BorderLayout());
 
     Box hbox1 = Box.createHorizontalBox();
-    hbox1.add(new HandPanel(hand));
+    hbox1.add(new PlayerPanel(hand));
     hbox1.add(new BoardPanel());
 
     Box hbox2 = Box.createHorizontalBox();

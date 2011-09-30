@@ -1,16 +1,16 @@
 package pokercalculator.ui;
 
 import pokercalculator.lib.Card;
-import pokercalculator.lib.Hand;
+import pokercalculator.lib.Player;
 
 /**
  *
  * @author Ivan Zgoniaiko <zgoniaiko [at] gmail.com>
  */
-public class HandPanel extends LargeCardButtonPanel {
-  private Hand hand;
+public class PlayerPanel extends LargeCardButtonPanel {
+  private Player hand;
 
-  public HandPanel(Hand hand) {
+  public PlayerPanel(Player hand) {
     this.hand = hand;
     Card[] cards = this.hand.getCards();
     buttons = new CardButton[cards.length];
